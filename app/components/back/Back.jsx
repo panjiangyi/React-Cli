@@ -5,7 +5,7 @@ class Back extends Component {
     }
     render() {
         this.fuck()
-        return (<div id='Back'>dfdf!!!!</div>)
+        return (<div id='Back'>dfdf</div>)
     }
 }
 export default Back;

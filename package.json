@@ -1,13 +1,14 @@
 {
-  "name": "telecom",
+  "name": "SJB",
   "version": "1.0.0",
-  "description": "商圈",
+  "description": "partner",
   "main": "index.js",
   "dependencies": {
     "lodash": "^4.17.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-router": "^4.2.0"
+    "react-router": "^4.2.0",
+    "redux": "^3.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.40",
@@ -42,13 +43,9 @@
     "start": "webpack-dev-server --config webpack.config.development.js",
     "build": "webpack --config webpack.config.build.js && node build.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "http://115.28.108.1:9000/hujie1/TreadingArea.git"
-  },
   "keywords": [
-    "telecom"
+    "partner"
   ],
-  "author": "twing",
+  "author": "SJB",
   "license": "ISC"
 }
