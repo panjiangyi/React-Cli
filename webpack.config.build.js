@@ -3,15 +3,16 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin'); //生成html
 var path = require('path');
 var WebpackChunkHash = require("webpack-chunk-hash");
-const fs = require('fs');
+const dpn = require('./package.json');
 
 module.exports = {
     entry: {
         index: './app/index.jsx',
         back: './app/back.jsx',
-        venders: [
-            'react', 'react-dom', 'lodash'
-        ],
+        // venders: [
+        //     'react', 'react-dom', 'lodash','react-router'
+        // ],
+        venders:Object.keys(dpn.dependencies)
     },
     output: {
         path: path.join(__dirname, "./build"), //编译到当前目录

@@ -4,14 +4,13 @@ var HtmlWebpackPlugin = require('html-webpack-plugin'); //生成html
 var path = require('path');
 var WebpackChunkHash = require("webpack-chunk-hash");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const dpn = require('./package.json');
 
 module.exports = {
     entry: {
         index: './app/index.jsx',
         back: './app/back.jsx',
-        venders: [
-            'react', 'react-dom', 'lodash'
-        ],
+        venders:Object.keys(dpn.dependencies)
     },
     output: {
         path: path.join(__dirname, "./development"), //编译到当前目录
