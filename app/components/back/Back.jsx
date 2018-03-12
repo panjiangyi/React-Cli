@@ -1,3 +1,11 @@
 import React, { Component } from 'react';
-const Back = () => <div id='Back'>back11!!!!!</div>
+class Back extends Component {
+    fuck=()=>{
+        console.log('fuck!')
+    }
+    render() {
+        this.fuck()
+        return (<div id='Back'>dfdf!!!!</div>)
+    }
+}
 export default Back;

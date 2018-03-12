@@ -10,7 +10,7 @@ module.exports = {
         index: './app/index.jsx',
         back: './app/back.jsx',
         venders: [
-            'react', 'react-dom' ,'lodash'
+            'react', 'react-dom', 'lodash'
         ],
     },
     output: {
@@ -19,32 +19,38 @@ module.exports = {
         publicPath: './development/'
     },
     module: {
-        rules: [{
-            test: /\.js$/,
-            use: [
-                'babel-loader?presets[]=es2015,presets[]=stage-0,retainLines=true'
-            ],
-            exclude: /(node_modules|bower_components)/
-        }, {
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-                publicPath: './',
-                use: {
-                    loader: 'css-loader',
-                    options: {}
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env']
+                },
+                exclude: /(node_modules|bower_components)/
+            },
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    publicPath: './',
+                    use: {
+                        loader: 'css-loader',
+                        options: {}
+                    }
+                })
+            }, {
+                test: /\.jsx$/,
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env']
+                },
+                exclude: /(node_modules|bower_components)/
+            }, {
+                test: /\.(png|jpg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'imgs/[name].[ext]',
                 }
-            })
-        }, {
-            test: /\.jsx$/,
-            loader: 'react-hot!babel',
-            exclude: /(node_modules|bower_components)/
-        }, {
-            test: /\.(png|jpg)$/,
-            loader: 'file-loader',
-            options: {
-                name: 'imgs/[name].[ext]',
             }
-        }
 
         ]
     },
@@ -71,9 +77,9 @@ module.exports = {
         }),
         new ExtractTextPlugin('[name].css'),
         // 分析代码
-        new BundleAnalyzerPlugin({
-            analyzerPort: 1001
-        }),
+        // new BundleAnalyzerPlugin({
+        //     analyzerPort: 1001
+        // }),
     ],
     devtool: "source-map",
     devServer: {

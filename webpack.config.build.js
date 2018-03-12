@@ -10,7 +10,7 @@ module.exports = {
         index: './app/index.jsx',
         back: './app/back.jsx',
         venders: [
-            'react', 'react-dom' ,'lodash'
+            'react', 'react-dom', 'lodash'
         ],
     },
     output: {
@@ -19,13 +19,16 @@ module.exports = {
         publicPath: './build/'
     },
     module: {
-        rules: [{
+        rules: [
+            {
             test: /\.js$/,
-            use: [
-                'babel-loader?presets[]=es2015,presets[]=stage-0,retainLines=true'
-            ],
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env']
+            },
             exclude: /(node_modules|bower_components)/
-        }, {
+        }, 
+        {
             test: /\.css$/,
             use: ExtractTextPlugin.extract({
                 publicPath: './',
@@ -36,7 +39,10 @@ module.exports = {
             })
         }, {
             test: /\.jsx$/,
-            loader: 'react-hot!babel',
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env']
+            },
             exclude: /(node_modules|bower_components)/
         }, {
             test: /\.(png|jpg)$/,
